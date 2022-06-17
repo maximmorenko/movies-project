@@ -23,3 +23,8 @@ nav {
   /* растояние между элементами */
   gap: 1rem;
 }
+.search-btn {
+  position: absolute;
+  top: 0;
+  right: 0.5rem;
+}
