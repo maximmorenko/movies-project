@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Movies from '../Components/Movies';
+import Preloader from '../Components/Preloader';
 
 
 class Main extends Component {
@@ -20,9 +21,9 @@ class Main extends Component {
         const {movies} = this.state;
         return (<main className="container content">
             {/* будем проверять, если ли movies в стейте не равно ли оно нулю 
-            если длина есть то возвращаем наши фильмы, если нет то заголовок*/}
+            если длина есть то возвращаем наши фильмы, если нет то preloader*/}
             {
-                movies.length ? (<Movies movies={this.state.movies}/>) : <h3>Loading...</h3>
+                movies.length ? (<Movies movies={this.state.movies}/>) : <Preloader />
             }
             
             

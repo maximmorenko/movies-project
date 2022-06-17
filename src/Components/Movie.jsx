@@ -22,7 +22,7 @@ function Movie(props) {
           </div>
           <div className="card-content">
             <span className="card-title activator grey-text text-darken-4">{Title}</span>
-            <p>Year: {Year}<span className="right">{Type}</span></p>
+            <p>{Year}<span className="right">{Type}</span></p>
           </div>
         </div>
   );
