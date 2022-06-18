@@ -28,3 +28,7 @@ nav {
   top: 0;
   right: 0.5rem;
 }
+/* добавим радиокнопкам отступы справа всем лебл кроме последнего*/
+label:not(:last-child) {
+  margin-right: 3rem;
+}
