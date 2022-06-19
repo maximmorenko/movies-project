@@ -13,16 +13,19 @@ class Search extends Component {
         if (e.key === 'Enter') {
             // по нажатию кнопки ентер в строке поиска
             // вызываем нашу функцию поиска из пропсов и передаем ей текущий стейт
-            this.props.searchMovies(this.setState.search);
+            this.props.searchMovies(this.setState.search, this.setState.type);
         }
     };
-    // создадим функцию оброботчик события, которая будет обновлять стейт type
+    // создадим функцию обработчик события, которая будет обновлять стейт type
     // функция будет принимать событие выбра датаатрибута data-type из коллекции dataset
-    hendleFilter = (e) => {
-        this.setState({ type: e.target.dataset.type });
+    hendleFilter = (event) => {
+        this.setState(()=>({ type: event.target.dataset.type }), ()=>{
+            // здесь мы должны вызвать нашу функцию, но только после обновления стейта, 
+            // дабавим колбек и вызовим в нем функцию, также передаем второй параметр, тайп.
+            this.props.searchMovies(this.setState.search, this.setState.type);
+        });
+        
     };
-    // добавим ф-цию в кнопки
-
     render() {
         return (
             <div className='row'>
@@ -33,8 +36,8 @@ class Search extends Component {
                             type='search'
                             placeholder='search'
                             value={this.state.search}
-                            onChange={(e) => {
-                                this.setState({ search: e.target.value });
+                            onChange={(event) => {
+                                this.setState({ search: event.target.value }); // перезаписываем наш стейт
                             }}
                             // отправку поиска сделаем на событии нажатия кнопки ентер и создадим визуальную кнопку search
                             onKeyDown={this.handleKey}
@@ -42,7 +45,7 @@ class Search extends Component {
                         <button
                             className='btn search-btn'
                             onClick={() =>
-                                this.props.searchMovies(this.setState.search)
+                                this.props.searchMovies(this.setState.search, this.setState.type)
                             }
                         >
                             Search
