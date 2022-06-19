@@ -13,7 +13,7 @@ class Search extends Component {
         if (e.key === 'Enter') {
             // по нажатию кнопки ентер в строке поиска
             // вызываем нашу функцию поиска из пропсов и передаем ей текущий стейт
-            this.props.searchMovies(this.setState.search, this.setState.type);
+            this.props.searchMovies(this.state.search, this.state.type);
         }
     };
     // создадим функцию обработчик события, которая будет обновлять стейт type
@@ -22,7 +22,7 @@ class Search extends Component {
         this.setState(()=>({ type: event.target.dataset.type }), ()=>{
             // здесь мы должны вызвать нашу функцию, но только после обновления стейта, 
             // дабавим колбек и вызовим в нем функцию, также передаем второй параметр, тайп.
-            this.props.searchMovies(this.setState.search, this.setState.type);
+            this.props.searchMovies(this.state.search, this.state.type);
         });
         
     };
@@ -45,7 +45,7 @@ class Search extends Component {
                         <button
                             className='btn search-btn'
                             onClick={() =>
-                                this.props.searchMovies(this.setState.search, this.setState.type)
+                                this.props.searchMovies(this.state.search, this.state.type)
                             }
                         >
                             Search

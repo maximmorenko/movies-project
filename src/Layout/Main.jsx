@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Movies} from '../Components/Movies';
 import Preloader from '../Components/Preloader';
 import {Search} from '../Components/Search';
-// мой ключ 3c1facc8, 78584b3c
+// мой ключ 3c1facc8 (http://www.omdbapi.com/?apikey=3c1facc8&s=all)
 
 
 class Main extends Component {
