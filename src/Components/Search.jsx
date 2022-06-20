@@ -34,7 +34,7 @@ class Search extends Component {
                         <input
                             className='validate'
                             type='search'
-                            placeholder='search'
+                            placeholder='please enter name in english'
                             value={this.state.search}
                             onChange={(event) => {
                                 this.setState({ search: event.target.value }); // перезаписываем наш стейт
