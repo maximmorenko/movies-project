@@ -23,10 +23,16 @@ class Main extends Component {
         // получаем массив с сервера и записываем его в сетстейт, и потом достаем из него нужную инфо
         // массив с данными находится в ключе Search в объекте дата, 
         // поэтому обращаемся к этому ключу data.Search
-    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=all`)
+    fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=all`)
         .then(response => response.json())
-        .then(data => this.setState({movies: data.Search, loading: false})) 
         // когда все данные загрузятся поменяем loading на false
+        .then(data => this.setState({movies: data.Search, loading: false}))
+        .catch((err) => {
+            console.error(err);
+            // также уберем бесконечную загруку
+            this.setState({loading: false})
+        })
+        
     }
     // для реализации поиска нужна функция которая будет спускаться вниз и обновлять наш стейт с фильмами
     // функция будет принимать поисковую строку str , которую мы отправляем через фетч шаблонной строкой
@@ -35,14 +41,19 @@ class Main extends Component {
     searchMovies = (str, type='all') => {
         // в начале запустим loading: true, после обновления данных остановим его
         this.setState({loading: true})
-        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${type !== 'all' ? `&type=${type}`: ''}`) 
+        fetch(`https://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${type !== 'all' ? `&type=${type}`: ''}`) 
         // по этому добавляем еще одно выражение ${}, так как это выражение, 
         // то мы можем сделать еще одну проверку (тайп не равно 'all' и если это так, 
         // то мы добавим еще один амперсанд & (для скрепления гет параметров), 
         // добавим тайп и добавим то значение которое пришло снаружи) если 'all' то добавим пустую строку
         .then(response => response.json())
-        .then(data => this.setState({movies: data.Search, loading: false}))
         // здессь остановим loading
+        .then(data => this.setState({movies: data.Search, loading: false}))
+        .catch((err) => {
+            console.error(err);
+            // также уберем бесконечную загруку
+            this.setState({loading: false})
+        })
     }
     
 
