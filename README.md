@@ -68,3 +68,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+# БЕЗОПАСНОЕ ХРАНЕНИЕ КЛЮЧЕЙ
+1. создаем файл .env.local для хранения ключа
+2. записываем значение ключа REACT_APP_API_KEY=3c1facc8

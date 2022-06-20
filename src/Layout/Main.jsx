@@ -4,6 +4,8 @@ import Preloader from '../Components/Preloader';
 import {Search} from '../Components/Search';
 // мой ключ 3c1facc8 (http://www.omdbapi.com/?apikey=3c1facc8&s=all)
 
+const API_KEY = process.env.REACT_APP_API_KEY //создаем переменную и записываем в нее значение ключа
+// ключ запишется в переменную при сборке, и на гитхаб не попадет.
 
 class Main extends Component {
     constructor(props) {
@@ -21,7 +23,7 @@ class Main extends Component {
         // получаем массив с сервера и записываем его в сетстейт, и потом достаем из него нужную инфо
         // массив с данными находится в ключе Search в объекте дата, 
         // поэтому обращаемся к этому ключу data.Search
-    fetch('http://www.omdbapi.com/?apikey=3c1facc8&s=all')
+    fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=all`)
         .then(response => response.json())
         .then(data => this.setState({movies: data.Search, loading: false})) 
         // когда все данные загрузятся поменяем loading на false
@@ -33,7 +35,7 @@ class Main extends Component {
     searchMovies = (str, type='all') => {
         // в начале запустим loading: true, после обновления данных остановим его
         this.setState({loading: true})
-        fetch(`http://www.omdbapi.com/?apikey=3c1facc8&s=${str}${type !== 'all' ? `&type=${type}`: ''}`) 
+        fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${str}${type !== 'all' ? `&type=${type}`: ''}`) 
         // по этому добавляем еще одно выражение ${}, так как это выражение, 
         // то мы можем сделать еще одну проверку (тайп не равно 'all' и если это так, 
         // то мы добавим еще один амперсанд & (для скрепления гет параметров), 
