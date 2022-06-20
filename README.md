@@ -1,74 +1,64 @@
-# Getting Started with Create React App
+### Проект MOVIES
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Описание проекта:
+MOVIES это небольшой сервис с поиском и фильтрацие по фильмам. 
+Адаптирован под разные устройства.
 
-## Available Scripts
+# 1. Подготовка проекта, создание шапки и подвала
+используемые библиотеки https://materializecss.com/cards.html#
 
-In the project directory, you can run:
+# 2. Знакомство с API базой фильмов
+будем использовать omdbapi. http://www.omdbapi.com
 
-### `npm start`
+# 3. Создание общего списка фильмов
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+# 4. Добавление строки поиска
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# 5. Реализация поиска фильмов
 
-### `npm test`
+# 6. Добавление фильтрации п категориям
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# 7. Обработка неудачного поиска
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-# БЕЗОПАСНОЕ ХРАНЕНИЕ КЛЮЧЕЙ
+# 8. Безопасное хранение ключа API (локальное)
 1. создаем файл .env.local для хранения ключа
 2. записываем значение ключа REACT_APP_API_KEY=3c1facc8
+3. передаем значение в сслку
+
+# 9. Сборка приложения и выгрузка на продакшн
+В рамках текущего проекта будем использовать githab pages.
+1. на удаленном репозитории необходимо настроить секретные переменные.
+2. settings=>secrets=>new repository secret.
+3. нужно прописать то же имя и значение что в файле: .env.local имя: REACT_APP_API_KEY значение: 3c1facc8
+4. дальше устанавливаем пакет githab pages. (npm install gh-pages --save-dev) 
+5. ключ --save-dev это зависимость для разработки, этим мы указываем что не нужно включать в итоговую сборку
+6. после установки проверяем наличие файла ("devDependencies": {"gh-pages": "^4.0.0"}) в package.json
+7. для удобства, в файле package.json в ключе "script" создаем команду ("predeploy": "npm run build") эта команда будет запускать билд
+8. затем, тамже, в файле package.json в ключе "script" добавляем команду ("deploy": "gh-pages -d build")
+9. затем в базовом ключе файла package.json создаем ("homepage": "https://maximmorenko.github.io/movies-project")
+10. сохраняем изменения git add -A 
+
+
+100. npm run build Создает приложение для производства в buildпапку.
+# работа с гитом, общие команды:
+
+# git add -A 
+долбавит все изменения в  текущий статус
+
+# git add .
+добавит все изменения
+
+# git commit -m "коммент"
+фиксирует изменения
+
+# git remote add origin git@github.com:maximmorenko/movies-project.git
+слияние удаленного и локального репозиториев
+
+# git clone git@github.com:maximmorenko/movies-project.git
+клонирование удаленного репозитория
+
+# git push -u origin master 
+слияние веток
+
+# git push origin master
+отправка изменений на уд. реп
